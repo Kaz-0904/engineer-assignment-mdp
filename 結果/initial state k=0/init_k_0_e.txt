@@ -1,0 +1,520 @@
+ 
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      
+      scenario_id
+      high_rate_per_hour
+      high_monthly_revenue
+      high_monthly_gross_profit
+      p_H_pattern
+      p_H
+      teach_strength
+      q_T
+    
+  
+  
+    
+      0
+      S01
+      4000
+      640000
+      340000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      1
+      S02
+      4000
+      640000
+      340000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      2
+      S03
+      4000
+      640000
+      340000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      3
+      S04
+      4000
+      640000
+      340000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      4
+      S05
+      4000
+      640000
+      340000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      5
+      S06
+      4000
+      640000
+      340000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      6
+      S07
+      5000
+      800000
+      500000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      7
+      S08
+      5000
+      800000
+      500000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      8
+      S09
+      5000
+      800000
+      500000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      9
+      S10
+      5000
+      800000
+      500000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      10
+      S11
+      5000
+      800000
+      500000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      11
+      S12
+      5000
+      800000
+      500000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      12
+      S13
+      6000
+      960000
+      660000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      13
+      S14
+      6000
+      960000
+      660000
+      weak
+      (0.35, 0.45, 0.55, 0.65)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      14
+      S15
+      6000
+      960000
+      660000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      15
+      S16
+      6000
+      960000
+      660000
+      medium
+      (0.1, 0.3, 0.55, 0.8)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+    
+      16
+      S17
+      6000
+      960000
+      660000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      weak
+      (0.35, 0.35, 0.35, 0.0)
+    
+    
+      17
+      S18
+      6000
+      960000
+      660000
+      strong
+      (0.0, 0.15, 0.5, 0.9)
+      strong
+      (0.75, 0.75, 0.75, 0.0)
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-da740948-a3b4-4055-9dc9-d54ffdc393d2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-da740948-a3b4-4055-9dc9-d54ffdc393d2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+  
+    
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    
+    
+
+  
+    
+  
+    
+    
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_c18a3940-fa8c-4bd4-8d20-fe9db6703201 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('scenario_df');
+      }
+      })();
+    
+  
+
+    
+  
+Selected scenario: ScenarioSpec(scenario_id='S10', high_rate_per_hour=5000, high_monthly_revenue=800000, high_monthly_gross_profit=500000, p_H_pattern_name='medium', p_H=(0.1, 0.3, 0.55, 0.8), teach_strength_name='strong', q_T=(0.75, 0.75, 0.75, 0.0), note='')
+
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      
+      policy
+      mean_cumulative_reward
+      std_cumulative_reward
+      se_cumulative_reward
+      mean_utilization_rate
+      mean_high_ratio
+      mean_low_ratio
+      mean_teach_ratio
+      mean_low_fit_ratio
+      mean_k
+    
+  
+  
+    
+      0
+      long_term_optimal
+      23936380.0
+      3.319453e+06
+      104970.327691
+      0.67675
+      0.67675
+      0.0000
+      0.10181
+      0.07394
+      2.64924
+    
+    
+      1
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.8607
+      0.00000
+      1.00000
+      0.00000
+    
+    
+      2
+      myopic_profit
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.8607
+      0.00000
+      1.00000
+      0.00000
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-b9f68d07-ae86-4123-ba52-ced06c330878 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b9f68d07-ae86-4123-ba52-ced06c330878');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+    
+  

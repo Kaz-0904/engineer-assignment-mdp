@@ -1,0 +1,2082 @@
+ Scenario-level winners (tie / unique winner / delta)
+
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      
+      scenario_id
+      winner_status
+      best_policy
+      tied_policies
+      top_policy_count
+      best_metric_value
+      runner_up_policy
+      runner_up_metric_value
+      delta_vs_second
+    
+  
+  
+    
+      0
+      S01
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      12904960.0
+      myopic_profit
+      11313600.0
+      1591360.0
+    
+    
+      1
+      S02
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      12904960.0
+      myopic_profit
+      11313600.0
+      1591360.0
+    
+    
+      2
+      S03
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      13414080.0
+      myopic_profit
+      12929120.0
+      484960.0
+    
+    
+      3
+      S04
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      14618960.0
+      myopic_profit
+      12929120.0
+      1689840.0
+    
+    
+      4
+      S05
+      tie
+      tie
+      long_term_optimal, myopic_profit
+      2
+      13179840.0
+      utilization_max
+      11313600.0
+      1866240.0
+    
+    
+      5
+      S06
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      15376520.0
+      myopic_profit
+      13179840.0
+      2196680.0
+    
+    
+      6
+      S07
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      20956000.0
+      myopic_profit
+      15247040.0
+      5708960.0
+    
+    
+      7
+      S08
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      21462860.0
+      myopic_profit
+      15247040.0
+      6215820.0
+    
+    
+      8
+      S09
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      20346760.0
+      myopic_profit
+      15750400.0
+      4596360.0
+    
+    
+      9
+      S10
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      26285900.0
+      myopic_profit
+      15750400.0
+      10535500.0
+    
+    
+      10
+      S11
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      23391240.0
+      myopic_profit
+      15964320.0
+      7426920.0
+    
+    
+      11
+      S12
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      27750620.0
+      myopic_profit
+      15964320.0
+      11786300.0
+    
+    
+      12
+      S13
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      31147200.0
+      myopic_profit
+      22735680.0
+      8411520.0
+    
+    
+      13
+      S14
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      31766060.0
+      myopic_profit
+      22735680.0
+      9030380.0
+    
+    
+      14
+      S15
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      30631160.0
+      myopic_profit
+      23305920.0
+      7325240.0
+    
+    
+      15
+      S16
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      37568940.0
+      myopic_profit
+      23305920.0
+      14263020.0
+    
+    
+      16
+      S17
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      34401420.0
+      myopic_profit
+      23267040.0
+      11134380.0
+    
+    
+      17
+      S18
+      unique_winner
+      long_term_optimal
+      long_term_optimal
+      1
+      39327420.0
+      myopic_profit
+      23267040.0
+      16060380.0
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-1a63be91-c0a3-43f9-88ea-ae2787780401 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-1a63be91-c0a3-43f9-88ea-ae2787780401');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+  
+    
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    
+    
+
+  
+    
+  
+    
+    
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_1f65465e-f67c-4347-b514-6f4165a82549 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('winner_df');
+      }
+      })();
+    
+  
+
+    
+  
+Mean cumulative reward by scenario × policy
+
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      policy
+      long_term_optimal
+      myopic_profit
+      utilization_max
+    
+    
+      scenario_id
+      
+      
+      
+    
+  
+  
+    
+      S01
+      12904960.0
+      11313600.0
+      11313600.0
+    
+    
+      S02
+      12904960.0
+      11313600.0
+      11313600.0
+    
+    
+      S03
+      13414080.0
+      12929120.0
+      11313600.0
+    
+    
+      S04
+      14618960.0
+      12929120.0
+      11313600.0
+    
+    
+      S05
+      13179840.0
+      13179840.0
+      11313600.0
+    
+    
+      S06
+      15376520.0
+      13179840.0
+      11313600.0
+    
+    
+      S07
+      20956000.0
+      15247040.0
+      11313600.0
+    
+    
+      S08
+      21462860.0
+      15247040.0
+      11313600.0
+    
+    
+      S09
+      20346760.0
+      15750400.0
+      11313600.0
+    
+    
+      S10
+      26285900.0
+      15750400.0
+      11313600.0
+    
+    
+      S11
+      23391240.0
+      15964320.0
+      11313600.0
+    
+    
+      S12
+      27750620.0
+      15964320.0
+      11313600.0
+    
+    
+      S13
+      31147200.0
+      22735680.0
+      11313600.0
+    
+    
+      S14
+      31766060.0
+      22735680.0
+      11313600.0
+    
+    
+      S15
+      30631160.0
+      23305920.0
+      11313600.0
+    
+    
+      S16
+      37568940.0
+      23305920.0
+      11313600.0
+    
+    
+      S17
+      34401420.0
+      23267040.0
+      11313600.0
+    
+    
+      S18
+      39327420.0
+      23267040.0
+      11313600.0
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-7d79bdda-697d-4df4-8744-4c2b296b3210 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7d79bdda-697d-4df4-8744-4c2b296b3210');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+  
+    
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    
+    
+
+  
+    
+  
+    
+    
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5df30391-0f2e-4ab6-893f-1f66fa728b25 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('reward_pivot');
+      }
+      })();
+    
+  
+
+    
+  
+Mean utilization rate by scenario × policy
+
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      policy
+      long_term_optimal
+      myopic_profit
+      utilization_max
+    
+    
+      scenario_id
+      
+      
+      
+    
+  
+  
+    
+      S01
+      0.79145
+      0.86070
+      0.8607
+    
+    
+      S02
+      0.79145
+      0.86070
+      0.8607
+    
+    
+      S03
+      0.80142
+      0.83558
+      0.8607
+    
+    
+      S04
+      0.76799
+      0.83558
+      0.8607
+    
+    
+      S05
+      0.84157
+      0.84157
+      0.8607
+    
+    
+      S06
+      0.78199
+      0.84157
+      0.8607
+    
+    
+      S07
+      0.63695
+      0.82410
+      0.8607
+    
+    
+      S08
+      0.64395
+      0.82410
+      0.8607
+    
+    
+      S09
+      0.70335
+      0.83558
+      0.8607
+    
+    
+      S10
+      0.70519
+      0.83558
+      0.8607
+    
+    
+      S11
+      0.69808
+      0.84157
+      0.8607
+    
+    
+      S12
+      0.72355
+      0.84157
+      0.8607
+    
+    
+      S13
+      0.63695
+      0.79145
+      0.8607
+    
+    
+      S14
+      0.64395
+      0.79145
+      0.8607
+    
+    
+      S15
+      0.63348
+      0.80142
+      0.8607
+    
+    
+      S16
+      0.70519
+      0.80142
+      0.8607
+    
+    
+      S17
+      0.67358
+      0.80139
+      0.8607
+    
+    
+      S18
+      0.72355
+      0.80139
+      0.8607
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-adb5a92e-0bde-4379-984e-092b68efb994 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-adb5a92e-0bde-4379-984e-092b68efb994');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+  
+    
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    
+    
+
+  
+    
+  
+    
+    
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_96f23f6b-88f5-4e93-acaf-0dd1efd7e5e9 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('util_pivot');
+      }
+      })();
+    
+  
+
+    
+  
+Full long-format summary
+
+  
+    
+
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+
+
+  
+    
+      
+      scenario_id
+      high_rate_per_hour
+      high_monthly_gross_profit
+      p_H_pattern
+      teach_strength
+      policy
+      mean_cumulative_reward
+      std_cumulative_reward
+      se_cumulative_reward
+      mean_utilization_rate
+      mean_high_ratio
+      mean_low_ratio
+      mean_teach_ratio
+      mean_low_fit_ratio
+      mean_k
+    
+  
+  
+    
+      0
+      S01
+      4000
+      340000
+      weak
+      weak
+      long_term_optimal
+      12904960.0
+      2.446701e+06
+      77371.484401
+      0.79145
+      0.30721
+      0.48424
+      0.00000
+      0.60573
+      1.12629
+    
+    
+      2
+      S01
+      4000
+      340000
+      weak
+      weak
+      myopic_profit
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      1
+      S01
+      4000
+      340000
+      weak
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      3
+      S02
+      4000
+      340000
+      weak
+      strong
+      long_term_optimal
+      12904960.0
+      2.446701e+06
+      77371.484401
+      0.79145
+      0.30721
+      0.48424
+      0.00000
+      0.60573
+      1.12629
+    
+    
+      5
+      S02
+      4000
+      340000
+      weak
+      strong
+      myopic_profit
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      4
+      S02
+      4000
+      340000
+      weak
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      6
+      S03
+      4000
+      340000
+      medium
+      weak
+      long_term_optimal
+      13414080.0
+      2.416327e+06
+      76410.974039
+      0.80142
+      0.30912
+      0.49230
+      0.00000
+      0.61564
+      1.09428
+    
+    
+      7
+      S03
+      4000
+      340000
+      medium
+      weak
+      myopic_profit
+      12929120.0
+      1.995930e+06
+      63116.856905
+      0.83558
+      0.17633
+      0.65925
+      0.00000
+      0.65832
+      1.00402
+    
+    
+      8
+      S03
+      4000
+      340000
+      medium
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      9
+      S04
+      4000
+      340000
+      medium
+      strong
+      long_term_optimal
+      14618960.0
+      2.490201e+06
+      78747.081968
+      0.76799
+      0.48821
+      0.27978
+      0.02796
+      0.35273
+      1.90884
+    
+    
+      10
+      S04
+      4000
+      340000
+      medium
+      strong
+      myopic_profit
+      12929120.0
+      1.995930e+06
+      63116.856905
+      0.83558
+      0.17633
+      0.65925
+      0.00000
+      0.65832
+      1.00402
+    
+    
+      11
+      S04
+      4000
+      340000
+      medium
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      13
+      S05
+      4000
+      340000
+      strong
+      weak
+      long_term_optimal
+      13179840.0
+      2.050025e+06
+      64827.475459
+      0.84157
+      0.17403
+      0.66754
+      0.00000
+      0.66840
+      0.97552
+    
+    
+      12
+      S05
+      4000
+      340000
+      strong
+      weak
+      myopic_profit
+      13179840.0
+      2.050025e+06
+      64827.475459
+      0.84157
+      0.17403
+      0.66754
+      0.00000
+      0.66840
+      0.97552
+    
+    
+      14
+      S05
+      4000
+      340000
+      strong
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      15
+      S06
+      4000
+      340000
+      strong
+      strong
+      long_term_optimal
+      15376520.0
+      2.504491e+06
+      79198.953842
+      0.78199
+      0.49361
+      0.28838
+      0.02838
+      0.36345
+      1.87944
+    
+    
+      16
+      S06
+      4000
+      340000
+      strong
+      strong
+      myopic_profit
+      13179840.0
+      2.050025e+06
+      64827.475459
+      0.84157
+      0.17403
+      0.66754
+      0.00000
+      0.66840
+      0.97552
+    
+    
+      17
+      S06
+      4000
+      340000
+      strong
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      18
+      S07
+      5000
+      500000
+      weak
+      weak
+      long_term_optimal
+      20956000.0
+      5.320570e+06
+      168251.193161
+      0.63695
+      0.63695
+      0.00000
+      0.00000
+      0.60573
+      1.17605
+    
+    
+      19
+      S07
+      5000
+      500000
+      weak
+      weak
+      myopic_profit
+      15247040.0
+      3.415015e+06
+      107992.244344
+      0.82410
+      0.17782
+      0.64628
+      0.00000
+      0.64632
+      1.04324
+    
+    
+      20
+      S07
+      5000
+      500000
+      weak
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      21
+      S08
+      5000
+      500000
+      weak
+      strong
+      long_term_optimal
+      21462860.0
+      4.827769e+06
+      152667.472044
+      0.64395
+      0.64395
+      0.00000
+      0.02657
+      0.60573
+      1.49144
+    
+    
+      22
+      S08
+      5000
+      500000
+      weak
+      strong
+      myopic_profit
+      15247040.0
+      3.415015e+06
+      107992.244344
+      0.82410
+      0.17782
+      0.64628
+      0.00000
+      0.64632
+      1.04324
+    
+    
+      23
+      S08
+      5000
+      500000
+      weak
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      24
+      S09
+      5000
+      500000
+      medium
+      weak
+      long_term_optimal
+      20346760.0
+      4.737880e+06
+      149824.926839
+      0.70335
+      0.52122
+      0.18213
+      0.04654
+      0.34835
+      1.61005
+    
+    
+      25
+      S09
+      5000
+      500000
+      medium
+      weak
+      myopic_profit
+      15750400.0
+      3.651256e+06
+      115462.855672
+      0.83558
+      0.17633
+      0.65925
+      0.00000
+      0.65832
+      1.00402
+    
+    
+      26
+      S09
+      5000
+      500000
+      medium
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      27
+      S10
+      5000
+      500000
+      medium
+      strong
+      long_term_optimal
+      26285900.0
+      3.310210e+06
+      104678.020568
+      0.70519
+      0.70519
+      0.00000
+      0.06465
+      0.04912
+      2.71794
+    
+    
+      28
+      S10
+      5000
+      500000
+      medium
+      strong
+      myopic_profit
+      15750400.0
+      3.651256e+06
+      115462.855672
+      0.83558
+      0.17633
+      0.65925
+      0.00000
+      0.65832
+      1.00402
+    
+    
+      29
+      S10
+      5000
+      500000
+      medium
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      30
+      S11
+      5000
+      500000
+      strong
+      weak
+      long_term_optimal
+      23391240.0
+      4.702526e+06
+      148706.930781
+      0.69808
+      0.62812
+      0.06996
+      0.10822
+      0.13130
+      2.44756
+    
+    
+      31
+      S11
+      5000
+      500000
+      strong
+      weak
+      myopic_profit
+      15964320.0
+      3.774719e+06
+      119367.106598
+      0.84157
+      0.17403
+      0.66754
+      0.00000
+      0.66840
+      0.97552
+    
+    
+      32
+      S11
+      5000
+      500000
+      strong
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      33
+      S12
+      5000
+      500000
+      strong
+      strong
+      long_term_optimal
+      27750620.0
+      3.008042e+06
+      95122.626202
+      0.72355
+      0.72355
+      0.00000
+      0.06669
+      0.05041
+      2.71061
+    
+    
+      34
+      S12
+      5000
+      500000
+      strong
+      strong
+      myopic_profit
+      15964320.0
+      3.774719e+06
+      119367.106598
+      0.84157
+      0.17403
+      0.66754
+      0.00000
+      0.66840
+      0.97552
+    
+    
+      35
+      S12
+      5000
+      500000
+      strong
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      36
+      S13
+      6000
+      660000
+      weak
+      weak
+      long_term_optimal
+      31147200.0
+      6.384684e+06
+      201901.431793
+      0.63695
+      0.63695
+      0.00000
+      0.00000
+      0.60573
+      1.17605
+    
+    
+      37
+      S13
+      6000
+      660000
+      weak
+      weak
+      myopic_profit
+      22735680.0
+      6.456813e+06
+      204182.343354
+      0.79145
+      0.30721
+      0.48424
+      0.00000
+      0.60573
+      1.12629
+    
+    
+      38
+      S13
+      6000
+      660000
+      weak
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      39
+      S14
+      6000
+      660000
+      weak
+      strong
+      long_term_optimal
+      31766060.0
+      5.791985e+06
+      183158.632001
+      0.64395
+      0.64395
+      0.00000
+      0.02657
+      0.60573
+      1.49144
+    
+    
+      40
+      S14
+      6000
+      660000
+      weak
+      strong
+      myopic_profit
+      22735680.0
+      6.456813e+06
+      204182.343354
+      0.79145
+      0.30721
+      0.48424
+      0.00000
+      0.60573
+      1.12629
+    
+    
+      41
+      S14
+      6000
+      660000
+      weak
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      42
+      S15
+      6000
+      660000
+      medium
+      weak
+      long_term_optimal
+      30631160.0
+      6.063006e+06
+      191729.092874
+      0.63348
+      0.63348
+      0.00000
+      0.09146
+      0.20387
+      1.94718
+    
+    
+      43
+      S15
+      6000
+      660000
+      medium
+      weak
+      myopic_profit
+      23305920.0
+      6.751931e+06
+      213514.814834
+      0.80142
+      0.30912
+      0.49230
+      0.00000
+      0.61564
+      1.09428
+    
+    
+      44
+      S15
+      6000
+      660000
+      medium
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      45
+      S16
+      6000
+      660000
+      medium
+      strong
+      long_term_optimal
+      37568940.0
+      3.968227e+06
+      125486.367691
+      0.70519
+      0.70519
+      0.00000
+      0.06465
+      0.04912
+      2.71794
+    
+    
+      46
+      S16
+      6000
+      660000
+      medium
+      strong
+      myopic_profit
+      23305920.0
+      6.751931e+06
+      213514.814834
+      0.80142
+      0.30912
+      0.49230
+      0.00000
+      0.61564
+      1.09428
+    
+    
+      47
+      S16
+      6000
+      660000
+      medium
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      48
+      S17
+      6000
+      660000
+      strong
+      weak
+      long_term_optimal
+      34401420.0
+      5.559921e+06
+      175820.153519
+      0.67358
+      0.67358
+      0.00000
+      0.13113
+      0.06188
+      2.64306
+    
+    
+      49
+      S17
+      6000
+      660000
+      strong
+      weak
+      myopic_profit
+      23267040.0
+      6.698679e+06
+      211830.842038
+      0.80139
+      0.30834
+      0.49305
+      0.00000
+      0.61692
+      1.08077
+    
+    
+      50
+      S17
+      6000
+      660000
+      strong
+      weak
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+    
+      51
+      S18
+      6000
+      660000
+      strong
+      strong
+      long_term_optimal
+      39327420.0
+      3.604289e+06
+      113977.610712
+      0.72355
+      0.72355
+      0.00000
+      0.06669
+      0.05041
+      2.71061
+    
+    
+      52
+      S18
+      6000
+      660000
+      strong
+      strong
+      myopic_profit
+      23267040.0
+      6.698679e+06
+      211830.842038
+      0.80139
+      0.30834
+      0.49305
+      0.00000
+      0.61692
+      1.08077
+    
+    
+      53
+      S18
+      6000
+      660000
+      strong
+      strong
+      utilization_max
+      11313600.0
+      1.381958e+06
+      43701.357416
+      0.86070
+      0.00000
+      0.86070
+      0.00000
+      0.71477
+      0.85820
+    
+  
+
+
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  
+
+    
+      const buttonEl =
+        document.querySelector('#df-d62df71c-5d98-49fe-ada5-0cc552e2fe5b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d62df71c-5d98-49fe-ada5-0cc552e2fe5b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    
+  
+
+
+  
+    
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    
+    
+
+  
+    
+  
+    
+    
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_18c524e8-9a5d-4db6-a636-d9b69b5fb99d button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('summary_df');
+      }
+      })();
+    
+  
+
+    
+  
